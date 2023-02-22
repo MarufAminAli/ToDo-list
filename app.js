@@ -3,9 +3,10 @@ const bodyParser = require('body-parser');
 const { urlencoded } = require('body-parser');
 const app = express();
 
-let items = [] ;
+let items = [];
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.static("public"));
 
 app.set('view engine', 'ejs');
 
