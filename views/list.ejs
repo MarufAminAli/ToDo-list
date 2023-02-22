@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To Do List</title>
-    <link rel="stylesheet" href="CSS/styles.css">
-</head>
-<body>
-    <div class="box" id = "heading" >
-   <h1> <%= kindOfDay %> </h1>
+
+
+    <%- include('header'); -%>
+
+
+<div class="box" id = "heading" >
+   <h1> <%= listTitle %> </h1>
     </div>
     <div class="box">
     <% for (let i = 0; i < newListItems.length; i++ ){ %>
@@ -21,11 +16,17 @@
    <% } %>
    <form class= "item" action="/" method="post">
     <input type="text" name="newItem" placeholder="New Item" autocomplete="off" >
-    <button type="submit" name="button">+</button>
+    <button type="submit" name="list" value = <%= listTitle %> >+</button> <br>
+    
    </form>
+
+    </div>
+
+   <div class="workRedirect">
+        <p class="redirect">want a seprate list for work? <br> 
+        we've got you covered! just click <a href="/work" class="link">here.</a><br>
+        To go back  click <a href="/" class="link">here</a></p>
     </div>
    
-   
 
-</body>
-</html>
+    <%- include('footer'); -%>
