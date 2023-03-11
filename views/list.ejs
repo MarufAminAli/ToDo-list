@@ -1,32 +1,27 @@
 
+<%- include("header") -%>
 
-    <%- include('header'); -%>
+  <div class="box" id="heading">
+    <h1> <%= listTitle %> </h1>
+  </div>
+
+  <div class="box">
+    <% newListItems.forEach ((item) => { %>
 
 
-<div class="box" id = "heading" >
-   <h1> <%= listTitle %> </h1>
-    </div>
-    <div class="box">
-    <% for (let i = 0; i < newListItems.length; i++ ){ %>
-        <div class="item">
-            <input type="checkbox">
-            <p><%= newListItems[i] %></p> <br>
-            
-        </div>
-   <% } %>
-   <form class= "item" action="/" method="post">
-    <input type="text" name="newItem" placeholder="New Item" autocomplete="off" >
-    <button type="submit" name="list" value = <%= listTitle %> >+</button> <br>
-    
-   </form>
+      <form action="/delete" method="post">
+      <div class="item">
+        <input type="checkbox" onChange="this.form.submit()" value ="<%= item._id %>" name = "checkbox">
+        <p><%= item.name %></p>
+      </div>
+      <input type="hidden" name="listName" value = "<%=listTitle%>"/>
+    </form>
+      <% }) %>
 
-    </div>
+      <form class="item" action="/" method="post">
+        <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+        <button type="submit" name="list" value ="<%=listTitle%>">+</button>
+      </form>
+  </div>
 
-   <div class="workRedirect">
-        <p class="redirect">Want a separate list for work? <br> 
-        We've got you covered! just click <a href="/work" class="link">here.</a><br>
-        To go back click <a href="/" class="link">here.</a></p>
-    </div>
-   
-
-    <%- include('footer'); -%>
+<%- include("footer") -%>
